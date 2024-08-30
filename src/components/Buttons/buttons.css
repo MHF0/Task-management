@@ -1,0 +1,37 @@
+/* New Tasks styles Start  */
+.new-task-button {
+  background-color: #395bd3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color   0.3s ease;
+  width: 145px;
+  height: 40px;
+}
+
+.plus-icon {
+  margin-right: 2px; /* Adjust spacing as needed */
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid white; /* Adjust border color and width as needed */
+  text-align: center;
+  line-height: 20px; /* Adjust line height to match button height */
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Hover Section for new task */
+
+.new-task-button:hover {
+  background: linear-gradient(90deg, #5a7dfb 0%, #4f70e8 22.15%, #2743a5 100%);
+}
+.new-task-button:hover .text-hover {
+  display: none;
+}
+/* New Tasks styles End  */
