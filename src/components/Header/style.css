@@ -13,8 +13,8 @@
   align-items: center;
   padding: 16px;
   background-color: #ffffff;
-  margin-top: 1rem;
   flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  border-radius: 16px;
 }
 
 .task-management-text {
@@ -34,6 +34,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  padding: 5px 10px;
 }
 
 /* Media Queries for Responsiveness */

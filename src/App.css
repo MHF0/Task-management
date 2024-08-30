@@ -1,37 +1,33 @@
-.header {
-  width: 50%;
-  margin: auto;
+.app {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
 }
 
-.task-management-container {
+.main-content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 32px; /* Adjust padding as needed */
-  background-color: #ffffff; /* Adjust background color as needed */
+  flex: 1;
+  width: 90%;
+  max-width: 1200px; /* Adjust based on your design */
   margin-top: 1rem;
+  border-radius: 16px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filter {
+  width: 250px;
+  background-color: #ffffff;
+  padding: 16px;
+  box-shadow: 0px 4px 16px 0px #c1c1c140;
   border-radius: 16px;
 }
 
-.task-management-text {
-  font-size: 18px;
-  font-weight: bold;
-  margin-left: 20px; /* Adjust left margin for spacing */
-}
-
-.new-task-button {
-  padding: 5px 10px;
-  background-color: #395BD3;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center; /* Center the content vertically */
-}
-
-
-
-.new-task-button .plus-icon {
-  margin-right: 5px; /* Adjust spacing between icon and text */
+.tasks {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 16px;
+  box-shadow: 0px 4px 16px 0px #c1c1c140;
+  border-radius: 16px;
+  margin-left: 2rem;
 }
