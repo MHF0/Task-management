@@ -34,34 +34,61 @@
 .new-task-button:hover .text-hover {
   display: none;
 }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .new-task-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .plus-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .new-task-button {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+
+  .plus-icon {
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+  }
+}
+
 /* New Tasks styles End  */
 
 /* Edit Delete style start */
-
 .icon-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: 10px;
+  align-items: center;
 }
 
 .edit-icon,
 .delete-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
   background-color: #f6f6ff;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  padding: 5px;
+  transition: background-color 0.3s ease;
+  padding: 6px;
 }
 
 .edit-icon svg,
 .delete-icon svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
 }
 
 .edit-icon:hover {
@@ -72,8 +99,42 @@
   background-color: #ffdddd;
 }
 
-/* Edit Delete style end */
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .icon-container {
+    gap: 8px;
+  }
 
+  .edit-icon,
+  .delete-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .edit-icon svg,
+  .delete-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .icon-container {
+    gap: 6px;
+  }
+
+  .edit-icon,
+  .delete-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .edit-icon svg,
+  .delete-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+}
 /* Dropdown style start */
 
 .dropdown-button {
