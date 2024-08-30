@@ -1,5 +1,6 @@
 import "./App.css";
 import Header from "./components/Header";
+import Task from "./components/Task";
 
 const App = () => {
   return (
@@ -10,7 +11,9 @@ const App = () => {
         {/* Filter  */}
         <div className="filter"></div>
         {/* Tasks  */}
-        <div className="tasks"></div>
+        <div className="tasks">
+          <Task />
+        </div>
       </div>
     </div>
   );
