@@ -1,31 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
 import EditDelete from "../Buttons/EditDelete";
 import DropdownButton from "../Buttons/DropdownButton";
 import Tooltip from "../Tooltip";
 import { useDispatch, useSelector } from "react-redux";
-import { addTask, updateTaskStatus, deleteTask } from "../../redux/tasksSlice";
+import { deleteTask } from "../../redux/tasksSlice";
 
 const Task = () => {
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.tasks.tasks);
 
-  const [data, setData] = useState([
-    {
-      title: "Task as example 01",
-      id: "1",
-      status: {
-        name: "Completed",
-        colors: { background: "#E1FFDE", color: "#0A7900" },
-      },
-      categories: ["Category 01", "Category 02", "Category 03"],
-      descriptions:
-        "Lorem ipsum dolor sit amet consectetur. Eu odio diam consequat enim felis. Sollicitudin posuere nunc sagittis egestas purus viverra id hendrerit varius. Tristique in nullam lacus facilisis ornare elementum et. ",
-    },
-  ]);
+  const handleDelete = (task) => {
+    console.log("Clicked", task);
 
-  const handleDelete = (id) => {
-    dispatch(deleteTask(id));
+    dispatch(deleteTask(task));
   };
   return (
     <div>
@@ -48,7 +36,7 @@ const Task = () => {
           </div>
           <div className="task-status-actions">
             <DropdownButton status={task?.status} />
-            <EditDelete deleteButton={handleDelete} task={task} />
+            <EditDelete deleteButton={() => handleDelete(task)} task={task} />
           </div>
         </div>
       ))}

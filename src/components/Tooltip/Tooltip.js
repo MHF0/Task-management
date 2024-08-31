@@ -24,7 +24,7 @@ const Tooltip = ({ children, tooltipContent }) => {
       aria-label={tooltipContent}
     >
       {children}
-      {showTooltip && (
+      {showTooltip && tooltipContent && (
         <div className="tooltip">
           <span>{tooltipContent}</span>
         </div>

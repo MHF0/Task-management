@@ -87,15 +87,7 @@ const TaskModal = ({ onClose }) => {
 
           <div className="form-group">
             <div className="categories-wrapper">
-              <input
-                placeholder="Categories"
-                type="text"
-                className="form-input"
-                value={categoryInput}
-                onChange={handleCategoryInput}
-                onKeyDown={handleCategoryKeyPress}
-              />
-              <div className="categories-container">
+              <div className="categories-input-container">
                 {categories.map((category, index) => (
                   <div className="category-tag" key={index}>
                     {category}
@@ -108,6 +100,14 @@ const TaskModal = ({ onClose }) => {
                     </button>
                   </div>
                 ))}
+                <input
+                  placeholder="Categories (press enter when finish)"
+                  type="text"
+                  className="form-input categories-input"
+                  value={categoryInput}
+                  onChange={handleCategoryInput}
+                  onKeyDown={handleCategoryKeyPress}
+                />
               </div>
             </div>
           </div>

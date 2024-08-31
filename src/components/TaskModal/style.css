@@ -34,19 +34,6 @@
   margin-bottom: 15px;
 }
 
-/* Form Label */
-.form-label {
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 5px;
-}
-
-/* Required Indicator */
-.required {
-  color: red;
-}
-
 /* Form Input */
 .form-input {
   width: 100%;
@@ -67,6 +54,25 @@
   position: relative;
 }
 
+/* Categories Input Container */
+.categories-input-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 1px solid #ebecfb;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+/* Categories Input */
+.categories-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 5px;
+  font-size: 14px;
+}
+
 /* Categories Container */
 .categories-container {
   display: flex;
@@ -83,8 +89,8 @@
   color: #007bff;
   border-radius: 20px;
   padding: 5px 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
 
 /* Category Remove Button */
