@@ -50,7 +50,7 @@ const TaskModal = ({ onClose, task }) => {
       id: task?.id || new Date().toISOString(),
       status: task?.status || {
         name: "Incomplete",
-        colors: { background: "#FFDEE1", color: "#790000" },
+        colors: { background: "#FFF2DE", color: "#FF6B00" },
       },
       categories,
       descriptions,

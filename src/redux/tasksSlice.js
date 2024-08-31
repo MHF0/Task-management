@@ -16,6 +16,7 @@ const tasksSlice = createSlice({
           state.categories.push(category);
         }
       });
+      state.filteredTasks = state.tasks;
 
       saveState(state);
     },
@@ -24,19 +25,31 @@ const tasksSlice = createSlice({
       const task = state.tasks.find((task) => task.id === id);
       if (task) {
         task.status = status;
+        state.filteredTasks = state.tasks;
         saveState(state);
       }
     },
     deleteTask: (state, action) => {
-      const { id } = action.payload;
+      const { id, categories } = action.payload;
       state.tasks = state.tasks.filter((task) => task.id !== id);
+      categories.forEach((category) => {
+        const index = state.categories.indexOf(category);
+        if (index !== -1) {
+          state.categories.splice(index, 1);
+        }
+      });
+      state.filteredTasks = state.tasks;
       saveState(state);
     },
     filterByCategory: (state, action) => {
       const { category } = action.payload;
-      state.filteredTasks = state.tasks.filter((task) =>
-        task.categories.includes(category)
-      );
+      if (category !== "All") {
+        state.filteredTasks = state.tasks.filter((task) =>
+          task.categories.includes(category)
+        );
+      } else {
+        state.filteredTasks = state.tasks;
+      }
     },
     updateTask: (state, action) => {
       const { id, title, categories, descriptions } = action.payload;
@@ -45,6 +58,12 @@ const tasksSlice = createSlice({
         task.title = title;
         task.categories = categories;
         task.descriptions = descriptions;
+
+        categories.forEach((category) => {
+          if (!state.categories.includes(category)) {
+            state.categories.push(category);
+          }
+        });
 
         saveState(state);
       }

@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import "./style.css";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { filterByCategory } from "../../redux/tasksSlice";
 
 const Filter = () => {
   const [selectedStatus, setSelectedStatus] = useState("All");
   const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const dispatch = useDispatch();
 
   const handleStatusChange = (status) => {
     setSelectedStatus(status);
@@ -11,7 +16,10 @@ const Filter = () => {
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
+    dispatch(filterByCategory({ category }));
   };
+
+  const categories = useSelector((state) => state.tasks.categories);
 
   return (
     <div className="filter-dropdown">
@@ -72,42 +80,21 @@ const Filter = () => {
             />
             All
           </li>
-          <li
-            className={selectedCategory === "Category 01" ? "active" : ""}
-            onClick={() => handleCategoryChange("Category 01")}
-          >
-            <input
-              type="radio"
-              name="category"
-              value="Category 01"
-              checked={selectedCategory === "Category 01"}
-            />
-            Category 01
-          </li>
-          <li
-            className={selectedCategory === "Category 02" ? "active" : ""}
-            onClick={() => handleCategoryChange("Category 02")}
-          >
-            <input
-              type="radio"
-              name="category"
-              value="Category 02"
-              checked={selectedCategory === "Category 02"}
-            />
-            Category 02
-          </li>
-          <li
-            className={selectedCategory === "Category 03" ? "active" : ""}
-            onClick={() => handleCategoryChange("Category 03")}
-          >
-            <input
-              type="radio"
-              name="category"
-              value="Category 03"
-              checked={selectedCategory === "Category 03"}
-            />
-            Category 03
-          </li>
+          {categories?.map((category, index) => (
+            <li
+              key={index}
+              className={selectedCategory === category ? "active" : ""}
+              onClick={() => handleCategoryChange(category)}
+            >
+              <input
+                type="radio"
+                name="category"
+                value={category}
+                checked={selectedCategory === category}
+              />
+              {category}
+            </li>
+          ))}
         </ul>
       </div>
     </div>

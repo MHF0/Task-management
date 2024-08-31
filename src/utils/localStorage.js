@@ -2,12 +2,12 @@ export const loadState = () => {
   try {
     const serializedState = localStorage.getItem("tasksState");
     if (serializedState === null) {
-      return { tasks: [], categories: [] };
+      return { tasks: [], categories: [], filteredTasks: [] };
     }
     return JSON.parse(serializedState);
   } catch (err) {
     console.error("Could not load state", err);
-    return { tasks: [], categories: [] };
+    return { tasks: [], categories: [], filteredTasks: [] };
   }
 };
 

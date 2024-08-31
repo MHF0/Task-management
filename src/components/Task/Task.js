@@ -8,7 +8,7 @@ import { deleteTask } from "../../redux/tasksSlice";
 
 const Task = () => {
   const dispatch = useDispatch();
-  const tasks = useSelector((state) => state.tasks.tasks);
+  const tasks = useSelector((state) => state.tasks.filteredTasks);
 
   const handleDelete = (task) => {
     console.log("Clicked", task);
