@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import "./NewTask";
 import TaskModal from "../TaskModal";
+import DeleteTaskModal from "../DeleteTaskModal";
 const EditDelete = ({ deleteButton, task }) => {
   const [openModal, setOpenModal] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
+
   return (
     <div className="icon-container">
       <div className="edit-icon" onClick={() => setOpenModal(true)}>
@@ -21,7 +24,7 @@ const EditDelete = ({ deleteButton, task }) => {
           />
         </svg>
       </div>
-      <div className="delete-icon" onClick={deleteButton}>
+      <div className="delete-icon" onClick={() => setModalOpen(true)}>
         <svg
           width="12"
           height="15"
@@ -46,6 +49,14 @@ const EditDelete = ({ deleteButton, task }) => {
 
       {openModal && (
         <TaskModal onClose={() => setOpenModal(false)} task={task} />
+      )}
+
+      {isModalOpen && (
+        <DeleteTaskModal
+          taskName={task.title}
+          onCancel={() => setModalOpen(false)}
+          onDelete={deleteButton}
+        />
       )}
     </div>
   );
