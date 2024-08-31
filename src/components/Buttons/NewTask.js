@@ -1,9 +1,9 @@
 import React from "react";
 import "./buttons.css";
-const NewTask = () => {
+const NewTask = ({ handleOpenModal }) => {
   return (
     <div>
-      <button className="new-task-button">
+      <button className="new-task-button" onClick={handleOpenModal}>
         <span className="plus-icon">+</span>{" "}
         <span className="text-hover">New Task</span>
       </button>

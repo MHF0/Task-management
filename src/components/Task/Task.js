@@ -3,7 +3,13 @@ import "./style.css";
 import EditDelete from "../Buttons/EditDelete";
 import DropdownButton from "../Buttons/DropdownButton";
 import Tooltip from "../Tooltip";
+import { useDispatch, useSelector } from "react-redux";
+import { addTask, updateTaskStatus, deleteTask } from "../../redux/tasksSlice";
+
 const Task = () => {
+  const dispatch = useDispatch();
+  const tasks = useSelector((state) => state.tasks.tasks);
+
   const [data, setData] = useState([
     {
       title: "Task as example 01",
@@ -17,9 +23,13 @@ const Task = () => {
         "Lorem ipsum dolor sit amet consectetur. Eu odio diam consequat enim felis. Sollicitudin posuere nunc sagittis egestas purus viverra id hendrerit varius. Tristique in nullam lacus facilisis ornare elementum et. ",
     },
   ]);
+
+  const handleDelete = (id) => {
+    dispatch(deleteTask(id));
+  };
   return (
     <div>
-      {data?.map((task, index) => (
+      {tasks?.map((task, index) => (
         <div className="task-card" key={index}>
           <div className="task-content">
             <div className="task-title">
@@ -38,7 +48,7 @@ const Task = () => {
           </div>
           <div className="task-status-actions">
             <DropdownButton status={task?.status} />
-            <EditDelete />
+            <EditDelete deleteButton={handleDelete} task={task} />
           </div>
         </div>
       ))}
