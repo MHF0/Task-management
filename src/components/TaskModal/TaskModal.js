@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addTask } from "../../redux/tasksSlice";
+import { addTask, updateTask } from "../../redux/tasksSlice";
 import "./style.css";
 
-const TaskModal = ({ onClose }) => {
-  const [title, setTitle] = useState("");
-  const [descriptions, setDescriptions] = useState("");
+const TaskModal = ({ onClose, task }) => {
+  const [title, setTitle] = useState(task?.title || "");
+  const [descriptions, setDescriptions] = useState(task?.descriptions || "");
   const [categoryInput, setCategoryInput] = useState("");
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(task?.categories || []);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (task) {
+      setTitle(task.title);
+      setDescriptions(task.descriptions);
+      setCategories(task.categories || []);
+    }
+  }, [task]);
 
   const handleCategoryInput = (e) => {
     setCategoryInput(e.target.value);
@@ -29,7 +37,7 @@ const TaskModal = ({ onClose }) => {
     );
   };
 
-  const handleCreateTask = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!title) {
@@ -37,10 +45,10 @@ const TaskModal = ({ onClose }) => {
       return;
     }
 
-    const newTask = {
+    const taskData = {
       title,
-      id: new Date().toISOString(),
-      status: {
+      id: task?.id || new Date().toISOString(),
+      status: task?.status || {
         name: "Incomplete",
         colors: { background: "#FFDEE1", color: "#790000" },
       },
@@ -48,8 +56,13 @@ const TaskModal = ({ onClose }) => {
       descriptions,
     };
 
-    // Dispatch the addTask action
-    dispatch(addTask(newTask));
+    if (task) {
+      // Dispatch the updateTask action if editing an existing task
+      dispatch(updateTask(taskData));
+    } else {
+      // Dispatch the addTask action if creating a new task
+      dispatch(addTask(taskData));
+    }
 
     // Reset form fields
     setTitle("");
@@ -63,8 +76,10 @@ const TaskModal = ({ onClose }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-container">
-        <h2 className="modal-title">Create New Task</h2>
-        <form onSubmit={handleCreateTask}>
+        <h2 className="modal-title">
+          {task ? "Edit Task" : "Create New Task"}
+        </h2>
+        <form onSubmit={handleSubmit}>
           <div className="form-group required-group">
             <input
               type="text"
@@ -117,7 +132,7 @@ const TaskModal = ({ onClose }) => {
               Cancel
             </button>
             <button type="submit" className="btn btn-create">
-              Create
+              {task ? "Save Changes" : "Create"}
             </button>
           </div>
         </form>

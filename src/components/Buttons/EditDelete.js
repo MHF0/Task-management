@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./NewTask";
+import TaskModal from "../TaskModal";
 const EditDelete = ({ deleteButton, task }) => {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <div className="icon-container">
-      <div className="edit-icon">
+      <div className="edit-icon" onClick={() => setOpenModal(true)}>
         <svg
           width="14"
           height="15"
@@ -41,6 +43,10 @@ const EditDelete = ({ deleteButton, task }) => {
           />
         </svg>
       </div>
+
+      {openModal && (
+        <TaskModal onClose={() => setOpenModal(false)} task={task} />
+      )}
     </div>
   );
 };

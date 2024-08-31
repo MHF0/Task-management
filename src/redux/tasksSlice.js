@@ -38,10 +38,26 @@ const tasksSlice = createSlice({
         task.categories.includes(category)
       );
     },
+    updateTask: (state, action) => {
+      const { id, title, categories, descriptions } = action.payload;
+      const task = state.tasks.find((task) => task.id === id);
+      if (task) {
+        task.title = title;
+        task.categories = categories;
+        task.descriptions = descriptions;
+
+        saveState(state);
+      }
+    },
   },
 });
 
-export const { addTask, updateTaskStatus, deleteTask, filterByCategory } =
-  tasksSlice.actions;
+export const {
+  addTask,
+  updateTaskStatus,
+  deleteTask,
+  filterByCategory,
+  updateTask,
+} = tasksSlice.actions;
 
 export default tasksSlice.reducer;

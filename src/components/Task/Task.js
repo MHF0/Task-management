@@ -35,7 +35,7 @@ const Task = () => {
             </div>
           </div>
           <div className="task-status-actions">
-            <DropdownButton status={task?.status} />
+            <DropdownButton task={task} />
             <EditDelete deleteButton={() => handleDelete(task)} task={task} />
           </div>
         </div>
