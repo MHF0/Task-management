@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { filterByCategory } from "../../redux/tasksSlice";
 
 const Filter = () => {
@@ -10,6 +9,7 @@ const Filter = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const dispatch = useDispatch();
+  const categories = useSelector((state) => state.tasks.categories);
 
   useEffect(() => {
     dispatch(
@@ -17,7 +17,15 @@ const Filter = () => {
     );
   }, [selectedCategory, selectedStatus, dispatch]);
 
-  const categories = useSelector((state) => state.tasks.categories);
+  const handleStatusChange = (status) => {
+    setSelectedStatus(status);
+    dispatch(filterByCategory({ category: selectedCategory, status }));
+  };
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    dispatch(filterByCategory({ category, status: selectedStatus }));
+  };
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -36,70 +44,39 @@ const Filter = () => {
         <div className="filter-section">
           <h3>Completion Status</h3>
           <ul className="filter-options">
-            <li
-              className={selectedStatus === "All" ? "active" : ""}
-              onClick={() => setSelectedStatus("All")}
-            >
-              <input
-                type="radio"
-                name="status"
-                value="All"
-                checked={selectedStatus === "All"}
-              />
-              All
-            </li>
-            <li
-              className={selectedStatus === "Completed" ? "active" : ""}
-              onClick={() => setSelectedStatus("Completed")}
-            >
-              <input
-                type="radio"
-                name="status"
-                value="Completed"
-                checked={selectedStatus === "Completed"}
-              />
-              Completed
-            </li>
-            <li
-              className={selectedStatus === "Incomplete" ? "active" : ""}
-              onClick={() => setSelectedStatus("Incomplete")}
-            >
-              <input
-                type="radio"
-                name="status"
-                value="Incomplete"
-                checked={selectedStatus === "Incomplete"}
-              />
-              Incomplete
-            </li>
+            {["All", "Completed", "Incomplete"].map((status) => (
+              <li
+                key={status}
+                className={selectedStatus === status ? "active" : ""}
+                onClick={() => handleStatusChange(status)}
+              >
+                <input
+                  type="radio"
+                  name="status"
+                  value={status}
+                  checked={selectedStatus === status}
+                  onChange={() => handleStatusChange(status)}
+                />
+                {status}
+              </li>
+            ))}
           </ul>
         </div>
         <div className="filter-section">
           <h3>Categories</h3>
           <ul className="filter-options">
-            <li
-              className={selectedCategory === "All" ? "active" : ""}
-              onClick={() => setSelectedCategory("All")}
-            >
-              <input
-                type="radio"
-                name="category"
-                value="All"
-                checked={selectedCategory === "All"}
-              />
-              All
-            </li>
-            {categories?.map((category, index) => (
+            {["All", ...categories].map((category) => (
               <li
-                key={index}
+                key={category}
                 className={selectedCategory === category ? "active" : ""}
-                onClick={() => setSelectedCategory(category)}
+                onClick={() => handleCategoryChange(category)}
               >
                 <input
                   type="radio"
                   name="category"
                   value={category}
                   checked={selectedCategory === category}
+                  onChange={() => handleCategoryChange(category)}
                 />
                 {category}
               </li>
@@ -120,78 +97,37 @@ const Filter = () => {
               <div className="filter-section">
                 <h3>Completion Status</h3>
                 <ul className="filter-options">
-                  <li
-                    className={selectedStatus === "All" ? "active" : ""}
-                    onClick={() => {
-                      setIsModalOpen(false);
-                      setSelectedStatus("All");
-                    }}
-                  >
-                    <input
-                      type="radio"
-                      name="status"
-                      value="All"
-                      checked={selectedStatus === "All"}
-                    />
-                    All
-                  </li>
-                  <li
-                    className={selectedStatus === "Completed" ? "active" : ""}
-                    onClick={() => {
-                      setIsModalOpen(false);
-                      setSelectedStatus("Completed");
-                    }}
-                  >
-                    <input
-                      type="radio"
-                      name="status"
-                      value="Completed"
-                      checked={selectedStatus === "Completed"}
-                    />
-                    Completed
-                  </li>
-                  <li
-                    className={selectedStatus === "Incomplete" ? "active" : ""}
-                    onClick={() => {
-                      setIsModalOpen(false);
-                      setSelectedStatus("Incomplete");
-                    }}
-                  >
-                    <input
-                      type="radio"
-                      name="status"
-                      value="Incomplete"
-                      checked={selectedStatus === "Incomplete"}
-                    />
-                    Incomplete
-                  </li>
+                  {["All", "Completed", "Incomplete"].map((status) => (
+                    <li
+                      key={status}
+                      className={selectedStatus === status ? "active" : ""}
+                      onClick={() => {
+                        setIsModalOpen(false);
+                        handleStatusChange(status);
+                      }}
+                    >
+                      <input
+                        type="radio"
+                        name="status"
+                        value={status}
+                        checked={selectedStatus === status}
+                        onChange={() => handleStatusChange(status)}
+                      />
+                      {status}
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div className="filter-section">
                 <h3>Categories</h3>
                 <ul className="filter-options">
-                  <li
-                    className={selectedCategory === "All" ? "active" : ""}
-                    onClick={() => {
-                      setIsModalOpen(false);
-                      setSelectedCategory("All");
-                    }}
-                  >
-                    <input
-                      type="radio"
-                      name="category"
-                      value="All"
-                      checked={selectedCategory === "All"}
-                    />
-                    All
-                  </li>
-                  {categories?.map((category, index) => (
+                  {["All", ...categories].map((category) => (
                     <li
-                      key={index}
+                      key={category}
                       className={selectedCategory === category ? "active" : ""}
                       onClick={() => {
                         setIsModalOpen(false);
-                        setSelectedCategory(category);
+                        handleCategoryChange(category);
                       }}
                     >
                       <input
@@ -199,6 +135,7 @@ const Filter = () => {
                         name="category"
                         value={category}
                         checked={selectedCategory === category}
+                        onChange={() => handleCategoryChange(category)}
                       />
                       {category}
                     </li>

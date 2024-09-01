@@ -97,7 +97,7 @@ const TaskModal = ({ onClose, task }) => {
                 required
               />
               <label className="form-label absolute text-gray-400 transform -translate-y-1/2 top-2 left-2 transition-all duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:left-2 peer-focus:text-sm peer-focus:text-blue-600">
-                Task Name <spam className="required">*</spam>
+                Task Name <span className="required">*</span>
               </label>
             </div>
           </div>
