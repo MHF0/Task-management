@@ -4,8 +4,9 @@ FROM node:18 AS build
 # Set the working directory
 WORKDIR /app
 
-# Copy package.json
+# Copy package.json and pnpm-lock.yaml (if exists)
 COPY package.json ./
+COPY pnpm-lock.yaml ./
 
 # Install pnpm globally
 RUN npm install -g pnpm
@@ -15,6 +16,9 @@ RUN pnpm install
 
 # Copy the rest of the application code
 COPY . .
+
+# Clear pnpm cache (optional)
+RUN pnpm store prune
 
 # Build the React application
 RUN pnpm run build
