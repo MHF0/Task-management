@@ -165,7 +165,7 @@ textarea.form-input + label {
 }
 
 /* Button Styles */
-.btn {
+.add-btn {
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
@@ -173,23 +173,23 @@ textarea.form-input + label {
   cursor: pointer;
 }
 
-.btn-cancel {
+.add-btn-cancel {
   background-color: #f2f5ff;
   color: #395bd3;
   width: 10em;
 }
 
-.btn-create {
+.add-btn-create {
   background-color: #395bd3;
   color: #ffffff;
   width: 10em;
 }
 
-.btn-cancel:hover {
+.add-btn-cancel:hover {
   background-color: #e0e0e0;
 }
 
-.btn-create:hover {
+.add-btn-create:hover {
   background-color: #2563eb;
 }
 

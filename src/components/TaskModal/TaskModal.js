@@ -158,10 +158,10 @@ const TaskModal = ({ onClose, task }) => {
           </div>
 
           <div className="form-actions">
-            <button type="button" className="btn btn-cancel" onClick={onClose}>
+            <button type="button" className="add-btn add-btn-cancel" onClick={onClose}>
               Cancel
             </button>
-            <button type="submit" className="btn btn-create">
+            <button type="submit" className="add-btn add-btn-create">
               {task ? "Save Changes" : "Create"}
             </button>
           </div>
