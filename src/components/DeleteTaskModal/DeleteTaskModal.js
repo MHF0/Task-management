@@ -52,7 +52,13 @@ const DeleteTaskModal = ({ taskName, onCancel, onDelete }) => {
           <button className="btn cancel-btn" onClick={onCancel}>
             Cancel
           </button>
-          <button className="btn delete-btn" onClick={onDelete}>
+          <button
+            className="btn delete-btn"
+            onClick={() => {
+              onDelete();
+              onCancel();
+            }}
+          >
             <span>
               <svg
                 className="trash-icon-delete"

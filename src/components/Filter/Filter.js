@@ -88,7 +88,7 @@ const Filter = () => {
       {/* Modal for Mobile */}
       {isModalOpen && (
         <div className="modal-overlay" onClick={toggleModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-content-filter" onClick={(e) => e.stopPropagation()}>
             <button className="close-modal" onClick={toggleModal}>
               &times;
             </button>
