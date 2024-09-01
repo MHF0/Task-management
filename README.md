@@ -1,70 +1,274 @@
-# Getting Started with Create React App
+<a  name="readme-top"></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- PROJECT LOGO -->
+<br  />
+<div  align="center">
 
-## Available Scripts
+<a  href="https://q-pros.com/">
+<img  src="https://github.com/user-attachments/assets/42a14cce-a7a7-4c05-8a97-a20a1a4a3019"  alt="Logo"  width="150"  height="100"  style="margin: 0 15;">
+</a>
+<h3  align="center"> Task Management Technical Assignment</h3>
+</div>
 
-In the project directory, you can run:
+  
 
-### `npm start`
+<!-- TABLE OF CONTENTS -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<details>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<summary>Table of Contents</summary>
 
-### `npm test`
+<ol>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<li><a  href="#Overview">Overview</a></li>
 
-### `npm run build`
+<li><a  href="#Project Structure">Project Structure</a></li>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<li>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<a  href="#Tech Stack">Tech Stack</a>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+</li>
 
-### `npm run eject`
+<li>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<a  href="#Getting started">Getting started</a>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+</li>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<li>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<a  href="#Docker">Docker</a>
 
-## Learn More
+</li>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<li><a  href="#test-cases">Test Cases</a></li>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<li><a  href="#test-cases">Video Walkthrough</a></li>
+<li><a  href="#conclusion">Conclusion</a></li>
 
-### Code Splitting
+</ol>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+</details>
 
-### Analyzing the Bundle Size
+  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<!-- Overview -->
 
-### Making a Progressive Web App
+## Overview
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  
 
-### Advanced Configuration
+Welcome to the Task Management Application project! This application is built using React and provides users with a streamlined interface to manage their tasks efficiently. Based on a carefully crafted UX/UI design from Figma, this application aims to deliver a user-friendly and visually appealing task management experience.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  
 
-### Deployment
+<!-- The Workflow -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Project Structure
 
-### `npm run build` fails to minify
+  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The project is organized into the following components:
+
+  
+
+```plaintext
+├── React-frontend/
+│   ├── Dockerfile
+│   ├── pnpm-lock.yaml
+│   ├── package.json
+│   ├── .gitignore
+│   ├── src/
+│	├── components/
+│	│   ├── Buttons/
+│	│   │   ├── buttons.css        # Styling for buttons
+│	│   │   ├── DropdownButton.js  # Dropdown button component
+│	│   │   ├── EditDelete.js      # Edit/Delete button component
+│	│   │   ├── NewTask.js         # New Task button component
+│	│   ├── DeleteTaskModal/
+│	│   │   ├── DeleteTaskModal.js # Modal component for deleting tasks
+│	│   │   ├── index.js           # Export module for DeleteTaskModal
+│	│   │   ├── style.css          # Styling for DeleteTaskModal
+│	│   ├── Filter/
+│	│   │   ├── Filter.js          # Filter component for tasks
+│	│   │   ├── index.js           # Export module for Filter
+│	│   │   ├── style.css          # Styling for Filter component
+│	│   ├── Header/
+│	│   │   ├── Header.js          # Header component
+│	│   │   ├── index.js           # Export module for Header
+│	│   │   ├── style.css          # Styling for Header component
+│	│   ├── Task/
+│	│   │   ├── index.js           # Export module for Task
+│	│   │   ├── style.css          # Styling for Task component
+│	│   │   ├── Task.js            # Task component for displaying tasks
+│	│   ├── TaskModal/
+│	│   │   ├── index.js           # Export module for TaskModal
+│	│   │   ├── style.css          # Styling for TaskModal
+│	│   │   ├── TaskModal.js       # Modal component for task operations (create/edit)
+│	│   ├── Tooltip/
+│	│   │   ├── index.js           # Export module for Tooltip
+│	│   │   ├── style.css          # Styling for Tooltip component
+│	│   │   ├── Tooltip.js         # Tooltip component for additional information
+│	├── redux/
+│	│   ├── store.js               # Redux store configuration
+│	│   ├── tasksSlice.js          # Redux slice for managing task states
+│	├── utils/
+│	│   ├── localStorage.js        # Utility functions for local storage management
+│	├── App.css                    # Global styles for the app
+│	├── App.js                     # Main App component
+│	├── App.test.js                # Tests for the App component
+│	├── index.css                  # Global CSS styles
+│	├── index.js                   # Entry point for the React application
+
+```
+<p  align="right">(<a  href="#readme-top">back to top</a>)</p>
+
+<!-- Tech Stack usage-->
+
+## Tech Stack Usage
+This project is built using the following technologies:
+
+- **React.js**: A JavaScript library for building user interfaces.
+- **Redux**: A predictable state container for JavaScript apps, used for managing the application's state.
+- **CSS (Tailwind CSS or CSS Modules)**: Styling the application with either utility-first CSS or scoped styles.
+- **JavaScript (ES6+)**: The primary language for building the app, taking advantage of modern JavaScript features.
+- **pnpm**: A fast, disk space-efficient package manager that manages the project dependencies.
+
+### Setup and Installation
+
+To get started with this project, follow these steps:
+
+1. **Install pnpm**: If you don't have `pnpm` installed globally, you can install it using npm:
+   ```bash
+   npm install -g pnpm
+   ```
+
+2. **Clone the repository**: Clone the project repository to your local machine.
+   ```bash
+   git clone https://github.com/MHF0/Task-management
+   cd task-management-app
+   ```
+
+3. **Install dependencies**: Use `pnpm` to install all required dependencies.
+   ```bash
+   pnpm install
+   ```
+
+4. **Run the application**: Start the development server using `pnpm`.
+   ```bash
+   pnpm start
+   ```
+   This will run the app in development mode. Open `http://localhost:3000` to view it in the browser.
+
+5. **Test the Deployed Application**: The application has been deployed on Netlify. You can test it live using the following link:
+
+[**Live Demo on Netlify**](https://farhan-task-management.netlify.app/)
+
+Simply click on the link to explore the application's features and functionality.
+
+### Scripts
+
+Here are some useful scripts defined in the project:
+
+- **Start the development server**:
+  ```bash
+  pnpm start
+  ```
+  This will start the React development server.
+
+- **Build the project for production**:
+  ```bash
+  pnpm build
+  ```
+  This will create an optimized production build in the `build` directory.
+
+### Dependency Management
+
+Using `pnpm` ensures that your dependencies are installed in a fast and space-efficient manner. It also creates a `node_modules/.pnpm` directory with symlinks to package files, reducing duplication and improving performance.
+
+<!-- Test Cases -->
+
+## Test Cases
+
+In this chapter, we are going to go through the test cases covered in this service, the test cases will be divided into crucial user experience cases, adding the task, update and delete
+
+  
+
+
+### Test Cases
+
+In this chapter, we will outline the test cases covered in this service. The test cases are divided into crucial user experience scenarios, focusing on adding, updating, and deleting tasks. These scenarios are essential to ensure the application behaves as expected and provides a seamless user experience.
+
+#### 1. **Adding a Task**
+   - **Test Case 1.1**: Verify that a user can successfully add a new task with all required fields filled.
+   - **Test Case 1.2**: Check that the newly added task appears in the correct category and is displayed in the task list.
+   - **Test Case 1.3**: Ensure that the task title is not empty; if it is, an appropriate error message should be shown.
+   - **Test Case 1.4**: Validate that the task is saved in local storage, so it persists after a page refresh.
+   - **Test Case 1.5**: Confirm that the task creation modal closes after a task is successfully added.
+   - **Test Case 1.6**: Verify that the user can cancel the task addition, and no new task is created.
+   -   **Test Case 1.7**: Verify that the user cannot add a task if the category is not created. If the user types a category, they must press Enter to create it before proceeding.
+
+#### 2. **Updating a Task**
+   - **Test Case 2.1**: Verify that a user can successfully edit an existing task, including updating the title, description, and category.
+   - **Test Case 2.2**: Check that the updated task information is reflected in the task list immediately after saving.
+   - **Test Case 2.3**: Ensure that the task editing modal displays the current task information when opened.
+   - **Test Case 2.4**: Validate that the user can cancel the update process, and the original task remains unchanged.
+   - **Test Case 2.5**: Confirm that updates to a task are saved in local storage.
+
+#### 3. **Deleting a Task**
+   - **Test Case 3.1**: Verify that a user can successfully delete a task and that it is removed from the task list.
+   - **Test Case 3.2**: Check that a confirmation modal appears when attempting to delete a task.
+   - **Test Case 3.3**: Ensure that the task is deleted from local storage, so it does not reappear after a page refresh.
+   - **Test Case 3.4**: Validate that the user can cancel the deletion process, and the task remains in the task list.
+   - **Test Case 3.5**: Confirm that deleted tasks are not recoverable once confirmed.
+
+#### 4. **Filtering and Completion Status**
+   - **Test Case 4.1**: Verify that tasks can be filtered by category and that only tasks belonging to the selected category are displayed.
+   - **Test Case 4.2**: Check that tasks can be filtered by completion status (e.g., completed vs. incomplete).
+   - **Test Case 4.3**: Ensure that marking a task as complete or incomplete updates its status both visually and in local storage.
+   - **Test Case 4.4**: Validate that tasks remain filtered correctly after adding, editing, or deleting tasks.
+   - **Test Case 4.5**: Confirm that the filtering feature persists through page refreshes, maintaining the user's last filter choice.
+
+---
+
+### Video Walkthrough
+A video will be provided to demonstrate these test cases in action. The video will cover:
+- **Adding a Task**
+https://github.com/user-attachments/assets/34685be2-e3e1-4205-878b-894fc522fcd7
+
+- **Updating a Task**
+
+https://github.com/user-attachments/assets/5216b7ba-c095-45e5-92d4-02c534a42fdb
+
+- **Deleting a Task**
+
+https://github.com/user-attachments/assets/64dfece0-d385-4e14-8607-e17048862d3f
+
+- **Filtering Tasks by Category and Completion Status**
+
+https://github.com/user-attachments/assets/da28022c-52ba-4c66-a530-d4c0edf18efd
+
+Stay tuned for the video to get a detailed walkthrough of the user experience and functionality testing.
+
+  
+
+<p  align="right">(<a  href="#readme-top">back to top</a>)</p>
+
+  
+
+<!-- Conclusion -->
+
+## Conclusion
+
+In conclusion, the Task Management Application project provides a comprehensive solution for managing tasks efficiently and effectively. Leveraging modern technologies such as React.js, Redux, and CSS modules, the application offers a user-friendly interface that simplifies task management. The project's structure ensures modularity and maintainability, while the use of `pnpm` for dependency management enhances performance and efficiency.
+
+The thorough testing of critical user interactions—adding, updating, and deleting tasks—ensures that the application delivers a seamless user experience. The filtering and completion status functionalities further enhance task organization and visibility. 
+
+By following the setup and installation instructions, users can quickly get the application up and running, and the live demo link offers a convenient way to explore the application’s features in a real-world environment.
+
+Overall, this project exemplifies best practices in frontend development, providing both a robust application and a clear, organized approach to task management. With its attention to detail in both design and functionality, the Task Management Application is well-positioned to meet user needs and expectations.
+
+Thank you for exploring this project. We hope it proves valuable in your task management endeavors.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
