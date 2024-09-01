@@ -21,9 +21,10 @@
 <ol>
 <li><a  href="#Overview">Overview</a></li>
 <li><a  href="#project-structure">Project Structure</a></li>
-<li><a  href="#tech-stack">Tech Stack</a></li><li><a  href="#Getting started">Getting started</a></li>
-<li><a  href="#Docker">Docker</a></li><li><a  href="#test-cases">Test Cases</a></li>
-<li><a  href="#test-cases">Video Walkthrough</a></li>
+<li><a  href="#tech-stack-usage">Tech Stack</a></li><li><a  href="#Getting started">Getting started</a></li>
+<li><a  href="#Docker">Docker</a></li>
+<li><a  href="#test-cases">Test Cases</a></li>
+<li><a  href="#video-walkthrough">Video Walkthrough</a></li>
 <li><a  href="#conclusion">Conclusion</a></li>
 </ol>
 </details>
@@ -167,13 +168,6 @@ Using `pnpm` ensures that your dependencies are installed in a fast and space-ef
 <!-- Test Cases -->
 
 ## Test Cases
-
-In this chapter, we are going to go through the test cases covered in this service, the test cases will be divided into crucial user experience cases, adding the task, update and delete
-
-  
-
-
-### Test Cases
 
 In this chapter, we will outline the test cases covered in this service. The test cases are divided into crucial user experience scenarios, focusing on adding, updating, and deleting tasks. These scenarios are essential to ensure the application behaves as expected and provides a seamless user experience.
 
