@@ -66,7 +66,7 @@ const tasksSlice = createSlice({
             state.categories.push(category);
           }
         });
-
+        state.filteredTasks = state.tasks;
         saveState(state);
       }
     },

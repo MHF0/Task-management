@@ -15,15 +15,6 @@
   margin-right: auto;
 }
 
-.filter {
-  width: 250px;
-  background-color: #ffffff;
-  padding: 16px;
-  box-shadow: 0px 4px 16px 0px #c1c1c140;
-  border-radius: 16px;
-  height: 80vh;
-}
-
 .tasks {
   flex: 1;
   padding: 16px;
