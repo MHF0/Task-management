@@ -42,14 +42,16 @@ const tasksSlice = createSlice({
       saveState(state);
     },
     filterByCategory: (state, action) => {
-      const { category } = action.payload;
-      if (category !== "All") {
-        state.filteredTasks = state.tasks.filter((task) =>
-          task.categories.includes(category)
-        );
-      } else {
-        state.filteredTasks = state.tasks;
-      }
+      const { category, status } = action.payload;
+      state.filteredTasks = state.tasks.filter((task) => {
+        const matchesCategory =
+          category === "All" || task.categories.includes(category);
+        const matchesStatus =
+          status === "All" ||
+          (status === "Completed" && task.status.name === "Completed") ||
+          (status === "Incomplete" && task.status.name === "Incomplete");
+        return matchesCategory && matchesStatus;
+      });
     },
     updateTask: (state, action) => {
       const { id, title, categories, descriptions } = action.payload;

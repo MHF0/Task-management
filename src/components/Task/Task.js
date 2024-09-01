@@ -11,8 +11,6 @@ const Task = () => {
   const tasks = useSelector((state) => state.tasks.filteredTasks);
 
   const handleDelete = (task) => {
-    console.log("Clicked", task);
-
     dispatch(deleteTask(task));
   };
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -10,14 +10,11 @@ const Filter = () => {
 
   const dispatch = useDispatch();
 
-  const handleStatusChange = (status) => {
-    setSelectedStatus(status);
-  };
-
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-    dispatch(filterByCategory({ category }));
-  };
+  useEffect(() => {
+    dispatch(
+      filterByCategory({ category: selectedCategory, status: selectedStatus })
+    );
+  }, [selectedCategory, selectedStatus, dispatch]);
 
   const categories = useSelector((state) => state.tasks.categories);
 
@@ -29,7 +26,7 @@ const Filter = () => {
         <ul className="filter-options">
           <li
             className={selectedStatus === "All" ? "active" : ""}
-            onClick={() => handleStatusChange("All")}
+            onClick={() => setSelectedStatus("All")}
           >
             <input
               type="radio"
@@ -41,7 +38,7 @@ const Filter = () => {
           </li>
           <li
             className={selectedStatus === "Completed" ? "active" : ""}
-            onClick={() => handleStatusChange("Completed")}
+            onClick={() => setSelectedStatus("Completed")}
           >
             <input
               type="radio"
@@ -53,7 +50,7 @@ const Filter = () => {
           </li>
           <li
             className={selectedStatus === "Incomplete" ? "active" : ""}
-            onClick={() => handleStatusChange("Incomplete")}
+            onClick={() => setSelectedStatus("Incomplete")}
           >
             <input
               type="radio"
@@ -70,7 +67,7 @@ const Filter = () => {
         <ul className="filter-options">
           <li
             className={selectedCategory === "All" ? "active" : ""}
-            onClick={() => handleCategoryChange("All")}
+            onClick={() => setSelectedCategory("All")}
           >
             <input
               type="radio"
@@ -84,7 +81,7 @@ const Filter = () => {
             <li
               key={index}
               className={selectedCategory === category ? "active" : ""}
-              onClick={() => handleCategoryChange(category)}
+              onClick={() => setSelectedCategory(category)}
             >
               <input
                 type="radio"
