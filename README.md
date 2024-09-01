@@ -21,7 +21,8 @@
 <ol>
 <li><a  href="#Overview">Overview</a></li>
 <li><a  href="#project-structure">Project Structure</a></li>
-<li><a  href="#tech-stack-usage">Tech Stack</a></li><li><a  href="#Getting started">Getting started</a></li>
+<li><a  href="#tech-stack-usage">Tech Stack</a></li>
+<li><a  href="#setup-and-installation">Getting started</a></li>
 <li><a  href="#Docker">Docker</a></li>
 <li><a  href="#test-cases">Test Cases</a></li>
 <li><a  href="#video-walkthrough">Video Walkthrough</a></li>
