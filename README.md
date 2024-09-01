@@ -126,7 +126,7 @@ To get started with this project, follow these steps:
 2. **Clone the repository**: Clone the project repository to your local machine.
    ```bash
    git clone https://github.com/MHF0/Task-management
-   cd task-management-app
+   cd Task-management
    ```
 
 3. **Install dependencies**: Use `pnpm` to install all required dependencies.
