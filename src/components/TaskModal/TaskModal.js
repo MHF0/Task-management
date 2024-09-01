@@ -8,6 +8,7 @@ const TaskModal = ({ onClose, task }) => {
   const [descriptions, setDescriptions] = useState(task?.descriptions || "");
   const [categoryInput, setCategoryInput] = useState("");
   const [categories, setCategories] = useState(task?.categories || []);
+  const [categoryInputError, setCategoryInputError] = useState("");
 
   const dispatch = useDispatch();
 
@@ -21,6 +22,7 @@ const TaskModal = ({ onClose, task }) => {
 
   const handleCategoryInput = (e) => {
     setCategoryInput(e.target.value);
+    setCategoryInputError(""); // Reset error message when user types
   };
 
   const handleCategoryKeyPress = (e) => {
@@ -28,6 +30,7 @@ const TaskModal = ({ onClose, task }) => {
       e.preventDefault();
       setCategories([...categories, categoryInput.trim()]);
       setCategoryInput(""); // Clear input after adding the category
+      setCategoryInputError(""); // Reset error message
     }
   };
 
@@ -45,6 +48,13 @@ const TaskModal = ({ onClose, task }) => {
       return;
     }
 
+    if (categoryInput.trim() !== "") {
+      setCategoryInputError(
+        "You must press Enter to add the category before submitting."
+      );
+      return;
+    }
+
     const taskData = {
       title,
       id: task?.id || new Date().toISOString(),
@@ -57,19 +67,15 @@ const TaskModal = ({ onClose, task }) => {
     };
 
     if (task) {
-      // Dispatch the updateTask action if editing an existing task
       dispatch(updateTask(taskData));
     } else {
-      // Dispatch the addTask action if creating a new task
       dispatch(addTask(taskData));
     }
 
-    // Reset form fields
     setTitle("");
     setDescriptions("");
     setCategories([]);
-
-    // Close the modal
+    setCategoryInputError(""); // Reset error message
     onClose();
   };
 
@@ -128,7 +134,9 @@ const TaskModal = ({ onClose, task }) => {
                 <input
                   placeholder=" "
                   type="text"
-                  className="form-input categories-input peer"
+                  className={`form-input categories-input peer ${
+                    categoryInputError ? "error" : ""
+                  }`}
                   value={categoryInput}
                   onChange={handleCategoryInput}
                   onKeyDown={handleCategoryKeyPress}
@@ -142,6 +150,9 @@ const TaskModal = ({ onClose, task }) => {
                 >
                   Categories
                 </label>
+                {categoryInputError && (
+                  <p className="error-message">{categoryInputError}</p>
+                )}
               </div>
             </div>
           </div>

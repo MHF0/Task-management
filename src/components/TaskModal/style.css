@@ -115,6 +115,7 @@ textarea.form-input + label {
   padding: 5px;
   border-radius: 4px;
   outline: none;
+  position: relative;
 }
 
 /* Categories Input */
@@ -190,4 +191,17 @@ textarea.form-input + label {
 
 .btn-create:hover {
   background-color: #2563eb;
+}
+
+.form-input.error {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  position: absolute;
+  top: 100%;
+  left: 0;
 }
