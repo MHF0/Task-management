@@ -110,7 +110,7 @@ This project is built using the following technologies:
 
 - **React.js**: A JavaScript library for building user interfaces.
 - **Redux**: A predictable state container for JavaScript apps, used for managing the application's state.
-- **CSS (Tailwind CSS or CSS Modules)**: Styling the application with either utility-first CSS or scoped styles.
+- **CSS**: Styling the application with either utility-first CSS or scoped styles.
 - **JavaScript (ES6+)**: The primary language for building the app, taking advantage of modern JavaScript features.
 - **pnpm**: A fast, disk space-efficient package manager that manages the project dependencies.
 
