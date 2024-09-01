@@ -23,7 +23,7 @@
 <li><a  href="#project-structure">Project Structure</a></li>
 <li><a  href="#tech-stack-usage">Tech Stack</a></li>
 <li><a  href="#setup-and-installation">Getting started</a></li>
-<li><a  href="#Docker">Docker</a></li>
+<li><a  href="#docker-setup">Docker Setup</a></li>
 <li><a  href="#test-cases">Test Cases</a></li>
 <li><a  href="#video-walkthrough">Video Walkthrough</a></li>
 <li><a  href="#conclusion">Conclusion</a></li>
@@ -165,6 +165,63 @@ Here are some useful scripts defined in the project:
 ### Dependency Management
 
 Using `pnpm` ensures that your dependencies are installed in a fast and space-efficient manner. It also creates a `node_modules/.pnpm` directory with symlinks to package files, reducing duplication and improving performance.
+
+
+<!-- Docker File -->
+Sure! Here’s a Docker setup section for your README, explaining why and how to use a Dockerfile for your React.js frontend application:
+
+---
+
+## Docker Setup
+
+### Why Use Docker?
+
+Docker simplifies the process of building, running, and deploying applications by containerizing them. Using a Dockerfile to containerize your React.js frontend application offers several benefits:
+
+- **Consistency**: Docker ensures that your application runs the same way in any environment, whether it's on your local machine, a staging server, or in production.
+- **Isolation**: Containers provide a clean environment with all necessary dependencies, preventing conflicts with other software on the host system.
+- **Scalability**: Docker makes it easier to scale your application by deploying multiple containers across different servers or cloud environments.
+- **Portability**: Docker containers can be easily moved between different systems or cloud providers, enhancing flexibility in deployment.
+
+### Docker Setup
+
+To containerize and run the React.js frontend application, follow these steps:
+
+1. **Build the Docker Image**
+
+   Open a terminal in the root directory of the project and run the following command to build the Docker image:
+
+   ```bash
+   docker build -t react-frontend .
+   ```
+
+   This command creates a Docker image named `react-frontend` using the instructions specified in the `Dockerfile` located in the project's root directory.
+
+2. **Run the Docker Container**
+
+   After building the image, run the container with the following command:
+
+   ```bash
+   docker run -p 80:80 react-frontend
+   ```
+
+   This command starts a Docker container from the `react-frontend` image and maps port 80 of the container to port 80 on your host machine. You can access the running application by navigating to `http://localhost` in your web browser.
+
+3. **Stopping the Container**
+
+   To stop the running container, use the following command:
+
+   ```bash
+   docker stop <container_id>
+   ```
+
+   Replace `<container_id>` with the ID or name of your running container, which can be found using `docker ps`.
+
+By using Docker, you streamline the development and deployment process, ensuring a reliable and consistent experience across different environments.
+
+---
+
+Feel free to adjust the instructions based on your specific project needs or deployment environment.
 
 <!-- Test Cases -->
 
