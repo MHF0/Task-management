@@ -32,12 +32,12 @@ const tasksSlice = createSlice({
     deleteTask: (state, action) => {
       const { id, categories } = action.payload;
       state.tasks = state.tasks.filter((task) => task.id !== id);
-      categories.forEach((category) => {
-        const index = state.categories.indexOf(category);
-        if (index !== -1) {
-          state.categories.splice(index, 1);
-        }
-      });
+      state.categories = state.categories.filter(
+        (category) =>
+          !categories.includes(category) ||
+          state.tasks.some((task) => task.category === category)
+      );
+
       state.filteredTasks = state.tasks;
       saveState(state);
     },
@@ -61,11 +61,15 @@ const tasksSlice = createSlice({
         task.categories = categories;
         task.descriptions = descriptions;
 
+        const allCategories = state.tasks.flatMap((t) => t.categories);
+        state.categories = Array.from(new Set(allCategories));
+
         categories.forEach((category) => {
           if (!state.categories.includes(category)) {
             state.categories.push(category);
           }
         });
+
         state.filteredTasks = state.tasks;
         saveState(state);
       }
