@@ -30,8 +30,10 @@
 }
 
 /* Form Group */
+/* Form Group */
 .form-group {
-  margin-bottom: 15px;
+  position: relative;
+  margin-bottom: 20px;
 }
 
 /* Form Input */
@@ -43,10 +45,60 @@
   font-size: 14px;
   box-sizing: border-box;
   position: relative;
+  background-color: transparent;
+  transition: border-color 0.3s ease-in-out;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: #395bd3;
 }
 
 .form-input::placeholder {
-  color: #aeafc4; /* Placeholder color for text */
+  color: transparent; /* Hide the placeholder text when focused */
+}
+
+/* Floating Label */
+.form-group label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #aeafc4;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+}
+.category-form-input-focus {
+  top: -3% !important;
+  color: #8385af;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+.form-input:focus + label,
+.form-input:not(:placeholder-shown) + label {
+  top: -1px;
+  left: 10px;
+  font-size: 12px;
+  color: #8385af;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+/* Apply specific styles for textarea */
+textarea.form-input + label {
+  top: 30%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #aeafc4;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.required {
+  color: #fe7c98;
 }
 
 /* Categories Wrapper */
@@ -62,6 +114,7 @@
   border: 1px solid #ebecfb;
   padding: 5px;
   border-radius: 4px;
+  outline: none;
 }
 
 /* Categories Input */

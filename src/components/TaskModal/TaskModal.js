@@ -80,24 +80,34 @@ const TaskModal = ({ onClose, task }) => {
           {task ? "Edit Task" : "Create New Task"}
         </h2>
         <form onSubmit={handleSubmit}>
-          <div className="form-group required-group">
-            <input
-              type="text"
-              className="form-input"
-              placeholder="Task Name *"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-            />
+          <div className="form-group">
+            <div className="relative">
+              <input
+                type="text"
+                className="form-input peer"
+                placeholder=" "
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+              <label className="form-label absolute text-gray-400 transform -translate-y-1/2 top-2 left-2 transition-all duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:left-2 peer-focus:text-sm peer-focus:text-blue-600">
+                Task Name <spam className="required">*</spam>
+              </label>
+            </div>
           </div>
 
           <div className="form-group">
-            <textarea
-              placeholder="Task description (optional)"
-              className="form-input"
-              value={descriptions}
-              onChange={(e) => setDescriptions(e.target.value)}
-            ></textarea>
+            <div className="relative">
+              <textarea
+                className="form-input peer"
+                placeholder=" "
+                value={descriptions}
+                onChange={(e) => setDescriptions(e.target.value)}
+              ></textarea>
+              <label className="form-label absolute text-gray-400 transform -translate-y-1/2 top-2 left-2 transition-all duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:left-2 peer-focus:text-sm peer-focus:text-blue-600">
+                Task Description (optional)
+              </label>
+            </div>
           </div>
 
           <div className="form-group">
@@ -116,13 +126,22 @@ const TaskModal = ({ onClose, task }) => {
                   </div>
                 ))}
                 <input
-                  placeholder="Categories (press enter when finish)"
+                  placeholder=" "
                   type="text"
-                  className="form-input categories-input"
+                  className="form-input categories-input peer"
                   value={categoryInput}
                   onChange={handleCategoryInput}
                   onKeyDown={handleCategoryKeyPress}
                 />
+                <label
+                  className={`${
+                    categories?.length > 0
+                      ? "category-form-input-focus"
+                      : "form-label"
+                  }`}
+                >
+                  Categories
+                </label>
               </div>
             </div>
           </div>
