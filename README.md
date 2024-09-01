@@ -168,10 +168,6 @@ Using `pnpm` ensures that your dependencies are installed in a fast and space-ef
 
 
 <!-- Docker File -->
-Sure! Here’s a Docker setup section for your README, explaining why and how to use a Dockerfile for your React.js frontend application:
-
----
-
 ## Docker Setup
 
 ### Why Use Docker?
@@ -217,12 +213,6 @@ To containerize and run the React.js frontend application, follow these steps:
 
    Replace `<container_id>` with the ID or name of your running container, which can be found using `docker ps`.
 
-By using Docker, you streamline the development and deployment process, ensuring a reliable and consistent experience across different environments.
-
----
-
-Feel free to adjust the instructions based on your specific project needs or deployment environment.
-
 <!-- Test Cases -->
 
 ## Test Cases
@@ -257,8 +247,6 @@ In this chapter, we will outline the test cases covered in this service. The tes
    - **Test Case 4.2**: Check that tasks can be filtered by completion status (e.g., completed vs. incomplete).
    - **Test Case 4.3**: Ensure that marking a task as complete or incomplete updates its status both visually and in local storage.
    - **Test Case 4.4**: Validate that tasks remain filtered correctly after adding, editing, or deleting tasks.
-   - **Test Case 4.5**: Confirm that the filtering feature persists through page refreshes, maintaining the user's last filter choice.
-
 ---
 
 ### Video Walkthrough
