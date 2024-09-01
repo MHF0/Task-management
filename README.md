@@ -19,36 +19,13 @@
 <summary>Table of Contents</summary>
 
 <ol>
-
 <li><a  href="#Overview">Overview</a></li>
-
-<li><a  href="#Project Structure">Project Structure</a></li>
-
-<li>
-
-<a  href="#Tech Stack">Tech Stack</a>
-
-</li>
-
-<li>
-
-<a  href="#Getting started">Getting started</a>
-
-</li>
-
-<li>
-
-<a  href="#Docker">Docker</a>
-
-</li>
-
-<li><a  href="#test-cases">Test Cases</a></li>
-
+<li><a  href="#project-structure">Project Structure</a></li>
+<li><a  href="#tech-stack">Tech Stack</a></li><li><a  href="#Getting started">Getting started</a></li>
+<li><a  href="#Docker">Docker</a></li><li><a  href="#test-cases">Test Cases</a></li>
 <li><a  href="#test-cases">Video Walkthrough</a></li>
 <li><a  href="#conclusion">Conclusion</a></li>
-
 </ol>
-
 </details>
 
   
